@@ -1,11 +1,10 @@
-import Button from "../components/Button";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/Post.module.css";
 
 const fetchPosts = async () => {
   await new Promise((resolve) => {
-    setTimeout(resolve, 6000);
+    setTimeout(resolve, 4000);
   });
   return fetch("https://www.freetogame.com/api/games", {
     next: {
@@ -19,7 +18,7 @@ export default async function PostsPage() {
   return (
     <section className={styles.postContainer}>
       {post.map((item) => (
-        <article key={item.id}>
+        <article key={item.id} className={styles.card}>
           <Image
             src={item.thumbnail}
             alt="Game Photo Cover"
@@ -27,13 +26,13 @@ export default async function PostsPage() {
             height={200}
           />
 
-          <a href={item.game_url} target="_blank" rel="noreferrer">
-            <h2 style={{ color: "#09f" }}>{item.title}</h2>
-          </a>
+          <h2 style={{ color: "#09f" }}>{item.title}</h2>
 
           <p>{item.short_description}</p>
 
-          <Button id={item.id} />
+          <a href={item.game_url} target="_blank" rel="noreferrer">
+            <button className={styles.btn}>FREE</button>
+          </a>
         </article>
       ))}
     </section>

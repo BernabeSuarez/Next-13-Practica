@@ -11,7 +11,7 @@ const links = [
     route: "/about",
   },
   {
-    label: "Posts",
+    label: "Games",
     route: "/posts",
   },
   {
